@@ -136,53 +136,46 @@ const Services = () => {
 
         <div className="grid md:grid-cols-2 gap-8">
           {services.map((service, index) => (
-            <div
-              key={service.title}
-              className={`service-card ${service.bgColor} ${service.textColor} animate-slide-up group overflow-hidden relative
-                  shadow-lg rounded-3xl border-b-4 border-r-4 border-brand-dark
-                `}
-              style={{ animationDelay: `${index * 0.15}s` }}
-            >
-              <div className="relative flex flex-col justify-between h-full">
-                <div className="flex items-center justify-between mb-8">
-                  <h3 className={`text-h3-mobile lg:text-h3-desktop font-medium max-w-xs group-hover:scale-105 transition-transform duration-300
-                    ${service.textColor}
-                    `}>
-                    <span className={`${service.textBgColor} px-1`}>
-                      {service.title}
-                    </span>
-                  </h3>
-                </div>
-                
-                <div className="flex items-center group cursor-pointer">
-                  <div className={`w-[50px] h-[50px] rounded-full flex
-                        transition-all duration-500 
-                        justify-center items-center hover:-rotate-45
-                        ${service.bgArrowColor} ${service.textArrowColor} ${service.iconArrowColor}
-                        group-hover:shadow-lg mr-2
-                      `}
-                    >
-                    <ArrowRight className={`w-6 h-6 ${service.iconArrowColor} transition-all duration-300 group-hover:translate-x-1 group-hover:scale-110`} />
-                  </div>
-                  <span className={`text-p-mobile lg:text-p-desktop font-medium group-hover:underline transition-all duration-300 ${service.descriptionColor}`}>
-                    {service.description}
-                  </span>
-                </div>
-              </div>
-              
-              {/* Background image with overlay */}
-              <div className="absolute bottom-0 bg-transparent right-0 top-0 w-[250px] h-full p-8 z-10  duration-300 overflow-hidden rounded-tl-3xl">
-                <img 
-                  src={service.image} 
-                  alt={service.title}
-                  className="w-full h-full object-scale-down transform group-hover:scale-110 transition-transform duration-500"
-                />
-              </div>
-              
-              {/* Animated decorative elements */}
-              <div className="absolute top-4 right-4 w-2 h-2 bg-current opacity-30 rounded-full animate-pulse"></div>
-              <div className="absolute bottom-4 left-4 w-3 h-3 bg-current opacity-20 transform rotate-45 animate-pulse" style={{ animationDelay: '1s' }}></div>
+            <div className={`service-card ${service.bgColor} ${service.textColor} animate-slide-up group overflow-hidden relative
+              shadow-lg rounded-3xl border-b-4 border-r-4 border-brand-dark p-3  md:p-8
+            `}
+            style={{ animationDelay: `${index * 0.15}s` }}
+          >
+            {/* Image */}
+            <div className="md:absolute md:top-0 md:right-0 md:bottom-0 md:w-[250px] md:h-full flex justify-center items-center p-3 md:p-8 z-10 overflow-hidden rounded-tl-3xl">
+              <img 
+                src={service.image} 
+                alt={service.title}
+                className="w-38 xs:w-32 md:w-full h-auto object-contain md:object-contain transition-transform duration-500 group-hover:scale-105"
+              />
             </div>
+
+            {/* Text content */}
+            <div className="relative flex flex-col md:justify-between md:h-full md:p-4 md:pr-[270px]"> 
+              <div className="flex items-center justify-between my-3 md:mb-8">
+                <h3 className={`text-h3-mobile lg:text-h3-desktop font-medium max-w-xs group-hover:scale-105 transition-transform duration-300 ${service.textColor}`}>
+                  <span className={`${service.textBgColor} px-1`}>
+                    {service.title}
+                  </span>
+                </h3>
+              </div>
+
+              {/* Learn more button */}
+              <div className="flex items-center group cursor-pointer">
+                <div className={`w-[50px] h-[50px] rounded-full flex
+                  transition-all duration-500 justify-center items-center hover:-rotate-45
+                  ${service.bgArrowColor} ${service.textArrowColor} ${service.iconArrowColor}
+                  group-hover:shadow-lg mr-2
+                `}>
+                  <ArrowRight className={`w-6 h-6 ${service.iconArrowColor} transition-all duration-300 group-hover:translate-x-1 group-hover:scale-110`} />
+                </div>
+                <span className={`text-p-mobile lg:text-p-desktop font-medium group-hover:underline transition-all duration-300 ${service.descriptionColor}`}>
+                  {service.description}
+                </span>
+              </div>
+            </div>
+          </div>
+
           ))}
         </div>
       </div>
